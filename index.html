@@ -1,71 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-    
-<head>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survey Form</title>
-</head>
-<body>
-    <header>
-        <H1 id='title'>Purchase Order Forum</H1>
-        <p id='description'>submit purchase order</p>
-    </header>
-    <main>
-        <form id='survey-form' class="form">
-            <div class="form-group">
-                <label id='name-label' for="name"> Name </label>
-                <input type='text' id="name" name="name" class='short-text' 
-                placeholder="Enter Name">    
-            </div>
-            <div class="form-group">
-                <label id='number-label' for="item-code"> Item Code </label>
-                <input type='number' id="item-code" name="item-code" min='5' max='9' class='short-text'
-                placeholder="Enter Item Code">    
-            </div>
-            <div class="form-group">
-                <label id='email-label' for="email"> Supplier </label>
-                <input type='email' id="email" name="email" class='short-text'
-                placeholder="Enter Supplier">    
-            </div>
-            <div class="form-group">
-                <select name="options" id="dropdown">
-                    <option value="">option1</option>
-                    <option value="">option2</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <p>this is a radio menu</p>
-                <label for="radio1">
-                    <input type="radio" name="radio1" id="radio1">
-                    radio1
-                </label>
-                <label for="radio2">
-                    <input type="radio" name="radio1" id="radio2">
-                    radio2
-                </label>
-            </div>
-            <div class="form-group">
-                <p>this is a box menu</p>
-                <label for="checkbox1">
-                    <input type="checkbox" name="checkbox1" id="checkbox1" value="checkbox1">
-                    box1
-                </label>
-                <label for="checkbox2">
-                    <input type="checkbox" name="checkbox1" id="checkbox2" value="checkbox2">
-                    box2
-                </label>
-            </div>
-            <div class="form-group">
-                <p>Enter Additional Comments</p>
-                <textarea name="Comments" id="textarea" class='text-area' placeholder="Enter Additional Comments"></textarea>
-            </div>
-            <div class="form-group" id='submit'>
-                <button type="submit">submit</button>
-            </div>
-        </form>
-    </main>
-</body>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Portfolio website</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <p>hello</p>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Portfolio website</div>
+      </div>
+    </div>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Test Build bin.asm.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Test Build bin.data.gz",
+        frameworkUrl: buildUrl + "/Test Build bin.asm.framework.js.gz",
+        codeUrl: buildUrl + "/Test Build bin.asm.js.gz",
+        memoryUrl: buildUrl + "/Test Build bin.asm.mem.gz",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Portfolio website",
+        productVersion: "6.0",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
 </html>
