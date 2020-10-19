@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Portfolio website</title>
+    <title>Unity WebGL Player | Testing Things</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -19,21 +19,20 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Portfolio website</div>
+        <div id="unity-build-title">Testing Things</div>
       </div>
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Test Build wo gzip.asm.loader.js";
+      var loaderUrl = buildUrl + "/Test WebGL.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Test Build wo gzip.data",
-        frameworkUrl: buildUrl + "/Test Build wo gzip.asm.framework.js",
-        codeUrl: buildUrl + "/Test Build wo gzip.asm.js",
-        memoryUrl: buildUrl + "/Test Build wo gzip.asm.mem",
+        dataUrl: buildUrl + "/Test WebGL.data",
+        frameworkUrl: buildUrl + "/Test WebGL.framework.js",
+        codeUrl: buildUrl + "/Test WebGL.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "Portfolio website",
-        productVersion: "6.0",
+        productName: "Testing Things",
+        productVersion: "0.1",
       };
 
       var container = document.querySelector("#unity-container");
